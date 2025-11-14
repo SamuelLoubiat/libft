@@ -6,10 +6,23 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:34:36 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/14 16:33:46 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/14 17:23:39 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
+int is_set(char *set, char c)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (set[i++] == c)
+			return (1);
+	}
+	return (0);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -24,12 +37,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while(s1[i])
 	{
 		j = 0;
-		while (set[j])
-			if (s1[i] == set[j++])
-			{
-				size--;
-				break;
-			}
+		if (is_set((char *) set, s1[i]))
+			size--;
 		i++;
 	}
 	str = malloc(sizeof(char) * (size + 1));
@@ -39,11 +48,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = 0;
 	while (s1[i])
 	{
-		j = 0;
-		while (set[j])
-			if (s1[i] == set[j++])
-				break;
-		if (j == ft_strlen(set))
+		if (!is_set((char *) set, s1[i]))
 			str[k++] = s1[i];
 		i++;
 	}
@@ -51,11 +56,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-int main(void)
+/*int main(void)
 {
 	char s1[] = "bob aime le c";
 	char s2[] = "abc";
 	char *s3 = ft_strtrim(s1, s2);
 	printf("%s", s3);
 	return (0);
-}
+}*/
