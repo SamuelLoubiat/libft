@@ -6,12 +6,12 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:34:36 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/14 17:23:39 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/16 17:12:15 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int is_set(char *set, char c)
+int	is_set(char *set, char c)
 {
 	int	i;
 
@@ -27,40 +27,36 @@ int is_set(char *set, char c)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	int		size;
 	int		i;
 	int		j;
-	int		k;
 
-	size = ft_strlen(s1);
 	i = 0;
-	while(s1[i])
-	{
-		j = 0;
-		if (is_set((char *) set, s1[i]))
-			size--;
+	j = ft_strlen(s1);
+	while (s1[i] && is_set((char *) set, s1[i]))
 		i++;
-	}
-	str = malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (0);
-	i = 0;
-	k = 0;
-	while (s1[i])
+	while (--j >= 0 && is_set((char *) set, s1[j]))
+		;
+	if (j < i)
 	{
-		if (!is_set((char *) set, s1[i]))
-			str[k++] = s1[i];
-		i++;
+		str = malloc(1);
+		str[0] = '\0';
+		return (str);
 	}
-	str[k] = '\0';
+	str = ft_substr(s1, i, j - i + 1);
 	return (str);
 }
 
-/*int main(void)
+/*#include <string.h>
+
+int main(void)
 {
-	char s1[] = "bob aime le c";
-	char s2[] = "abc";
-	char *s3 = ft_strtrim(s1, s2);
-	printf("%s", s3);
+	char *s1 = "Hello \t  Please\n Trim me !";
+ 	char *s2 = "Hello \t  Please\n Trim me !";
+ 	char *ret = ft_strtrim(" . abcd . ", " ");
+	printf("'%s'", ret); 
+ 	if (!strcmp(ret, s2))
+ 		exit(1);
+ 	exit(0);
+
 	return (0);
 }*/
