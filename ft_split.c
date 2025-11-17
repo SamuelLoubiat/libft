@@ -36,8 +36,9 @@ char	**ft_split(char const *s, char c)
 	int	j;
 	int	k;
 
+	if (!s)
+		return (0);
 	words = count_words(s, c);
-	printf("%d\n", words);
 	split = (char **) malloc(sizeof(char *) * (words + 1));
 	if (!split)
 		return (0);
@@ -46,16 +47,18 @@ char	**ft_split(char const *s, char c)
 	k = 0;
 	while (words > 0)
 	{
+		while (s[j] == c)
+			j++;
+		i = j;
 		while (s[j] != c)
 			j++;
-		split[k++] = ft_substr(s, i, j);
+		split[k++] = ft_substr(s, i, j - i);
 		words--;
-		i = j;
 	}
 	return (split);
 }
 
-int main(void)
+/*int main(void)
 {
 	char *s = "split  ||this|for|me|||||!|";
  	int i = 0;
@@ -68,4 +71,4 @@ int main(void)
 		i++;
 	}
 	return (0);
-}
+}*/
