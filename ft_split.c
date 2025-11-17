@@ -6,7 +6,7 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 17:12:28 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/16 18:34:09 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/17 14:00:00 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -60,9 +60,9 @@ char	**ft_split(char const *s, char c)
 
 /*int main(void)
 {
-	char *s = "split  ||this|for|me|||||!|";
+	char *s = "      split       this for   me  !       ";
  	int i = 0;
- 	char **result = ft_split(s, '|');
+ 	char **result = ft_split(s, ' ');
  
  	while (result[i])
  	{

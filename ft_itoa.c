@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/17 13:12:53 by sloubiat          #+#    #+#             */
+/*   Updated: 2025/11/17 13:18:59 by sloubiat         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 
 static int	find_size(int nb)
@@ -5,12 +16,14 @@ static int	find_size(int nb)
 	int size;
 
 	size = 0;
+	if (nb == 0)
+		return (1);
 	if (nb < 0)
 	{
 		size++;
 		nb *= -1;
 	}
-	while (nb > 0)
+	while (nb >0)
 	{
 		size++;
 		nb /= 10;
@@ -33,6 +46,11 @@ char	*ft_itoa(int n)
 		n *= -1;
 	}
 	res[size--] = '\0';
+	if (n == 0)
+	{
+		res[0] = '0';
+		return (res);
+	}
 	while (n > 0)
 	{
 		res[size--] = (n % 10) + '0';

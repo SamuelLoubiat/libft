@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/17 14:04:00 by sloubiat          #+#    #+#             */
+/*   Updated: 2025/11/17 14:06:49 by sloubiat         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
+	int		i;
 	char	*res;
 
 	i = 0;
