@@ -17,12 +17,16 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	total;
 	char	*s;
 
+	if (nmemb <= 0 || size <= 0)
+		return (malloc(0));
+	if (size && nmemb > 2147483647 / size)
+		return (0);
 	total = nmemb * size;
 	s = (char *) malloc(total);
 	if (!s)
 		return (0);
 	i = 0 ;
-	while (i <= total)
+	while (i < total)
 	{
 		s[i] = 0;
 		i++;

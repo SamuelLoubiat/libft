@@ -14,27 +14,66 @@
 static int	count_words(char const *s, char c)
 {
 	int	count;
+	int	word;
 	int	i;
 
 	count = 0;
+	word = 0;
 	i = 0;
 	while (s[i])
-		if (s[i++] == c)
+	{
+		if (s[i] != c && word == 0)
 		{
 			count++;
-			while (s[i] == c)
-				i++;
+			word = 1;
 		}
+		if (s[i] == c)
+			word = 0;
+		i++;
+	}
 	return (count);
+}
+
+static void	free_all(char **split, int k)
+{
+	while (split[--k])
+		free(split[k]);
+	free(split);
+}
+
+static int set_word(char **split, int words, const char *s, char c)
+{
+	int	start;
+	int	end;
+	int	k;
+
+	start = 0;
+	end = 0;
+	k = 0;
+	while (words > 0)
+	{
+		while (s[end] == c)
+			end++;
+		start = end;
+		while (s[end] != c && s[end])
+			end++;
+		split[k] = ft_substr(s, start, end - start);
+		if (!split[k])
+		{
+			free_all(split, k);
+			return (0);
+		}
+		k++;
+		words--;
+	}
+	split[k] = 0;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	int	words;
 	char	**split;
-	int	i;
-	int	j;
-	int	k;
 
 	if (!s)
 		return (0);
@@ -42,33 +81,20 @@ char	**ft_split(char const *s, char c)
 	split = (char **) malloc(sizeof(char *) * (words + 1));
 	if (!split)
 		return (0);
-	i = 0;
-	j = 0;
-	k = 0;
-	while (words > 0)
-	{
-		while (s[j] == c)
-			j++;
-		i = j;
-		while (s[j] != c)
-			j++;
-		split[k++] = ft_substr(s, i, j - i);
-		words--;
-	}
+	if (!set_word(split, words, s, c))
+		return (0);
 	return (split);
 }
 
 /*int main(void)
 {
-	char *s = "      split       this for   me  !       ";
- 	int i = 0;
- 	char **result = ft_split(s, ' ');
- 
- 	while (result[i])
- 	{
-		printf("%s\n", result[i]);
- 		free(result[i]);
-		i++;
-	}
+	char **tab = ft_split("tripouille", ' ');
+
+	printf("check 1:%d\n", strcmp(tab[0], "tripouille"));
+	printf("taille %d - %d\n",strlen(tab[0]), strlen("tripouille"));
+	printf("check 2:%d\n",tab[1] == 0);
+	//printf("taille %d - %d\n",strlen(tab[1]), strlen("42"));
+	//printf("check 3:%d",tab[2] == NULL);
+	free_all(tab);
 	return (0);
 }*/
