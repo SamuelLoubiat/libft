@@ -6,14 +6,14 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:12:53 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/17 13:18:59 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/17 15:15:37 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 static int	find_size(int nb)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	if (nb == 0)
@@ -23,7 +23,7 @@ static int	find_size(int nb)
 		size++;
 		nb *= -1;
 	}
-	while (nb >0)
+	while (nb > 0)
 	{
 		size++;
 		nb /= 10;
@@ -36,10 +36,12 @@ char	*ft_itoa(int n)
 	char	*res;
 	int		size;
 
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	size = find_size(n);
 	res = malloc(sizeof(char) * (size + 1));
-	if(!res)
-		return(0);
+	if (!res)
+		return (0);
 	if (n < 0)
 	{
 		res[0] = '-';
@@ -47,10 +49,7 @@ char	*ft_itoa(int n)
 	}
 	res[size--] = '\0';
 	if (n == 0)
-	{
 		res[0] = '0';
-		return (res);
-	}
 	while (n > 0)
 	{
 		res[size--] = (n % 10) + '0';
