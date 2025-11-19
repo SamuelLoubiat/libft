@@ -6,7 +6,7 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 17:12:28 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/17 14:00:00 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/19 15:37:15 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -36,12 +36,15 @@ static int	count_words(char const *s, char c)
 
 static void	free_all(char **split, int k)
 {
-	while (split[--k])
-		free(split[k]);
+	while (k > 0)
+	{
+		free(split[k - 1]);
+		k--;
+	}
 	free(split);
 }
 
-static int set_word(char **split, int words, const char *s, char c)
+static int	set_word(char **split, int words, const char *s, char c)
 {
 	int	start;
 	int	end;
@@ -72,7 +75,7 @@ static int set_word(char **split, int words, const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int	words;
+	int		words;
 	char	**split;
 
 	if (!s)
@@ -88,13 +91,13 @@ char	**ft_split(char const *s, char c)
 
 /*int main(void)
 {
-	char **tab = ft_split("tripouille", ' ');
-
+	char **tab;
 	printf("check 1:%d\n", strcmp(tab[0], "tripouille"));
 	printf("taille %d - %d\n",strlen(tab[0]), strlen("tripouille"));
 	printf("check 2:%d\n",tab[1] == 0);
 	//printf("taille %d - %d\n",strlen(tab[1]), strlen("42"));
 	//printf("check 3:%d",tab[2] == NULL);
-	free_all(tab);
+	tab = ft_split("hello!",' ');
+	free_all(tab,1);
 	return (0);
 }*/

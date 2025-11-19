@@ -6,7 +6,7 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:34:36 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/16 17:12:15 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/19 15:04:46 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -39,6 +39,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (j < i)
 	{
 		str = malloc(1);
+		if (!str)
+			return (0);
 		str[0] = '\0';
 		return (str);
 	}

@@ -6,7 +6,7 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:03:28 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/14 15:25:55 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/19 15:02:09 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -20,6 +20,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start > (unsigned int) ft_strlen(s))
 	{
 		sub = (char *) malloc(sizeof(char));
+		if (!sub)
+			return (0);
 		sub[0] = '\0';
 		return (sub);
 	}
