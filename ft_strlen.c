@@ -6,13 +6,13 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:36:54 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/09 11:59:48 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/20 16:13:10 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])

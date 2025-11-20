@@ -6,7 +6,7 @@
 /*   By: sloubiat <sloubiat@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 11:14:42 by sloubiat          #+#    #+#             */
-/*   Updated: 2025/11/16 17:53:49 by sloubiat         ###   ########lyon.fr   */
+/*   Updated: 2025/11/20 16:08:10 by sloubiat         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		ft_isascii(int c);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
-int		ft_strlen(const char *s);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_strncmp(char *s1, char *s2, size_t n);
@@ -49,4 +48,5 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 size_t	ft_strlcat(char *dest, const char *src, size_t n);
 size_t	ft_strlcpy(char *dest, char *src, size_t n);
+size_t	ft_strlen(const char *s);
 #endif
